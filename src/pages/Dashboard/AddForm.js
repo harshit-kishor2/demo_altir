@@ -12,8 +12,8 @@ import {
 import React, {useContext, useState} from 'react';
 import {DataContext} from '../../context/DataContext';
 
-const AddForm = () => {
-  const {setReward} = useContext(DataContext);
+const AddForm = ({setBottomClick}) => {
+  const {setReward, setUser, user} = useContext(DataContext);
   const [to, setTo] = useState('');
   const [amount, setAmount] = useState('');
   const [message, setMessage] = useState('');
@@ -21,8 +21,23 @@ const AddForm = () => {
   const onSubmit = () => {
     if (!to && !amount && !message) {
       setError('Please fill input fields.');
+    } else if (isNaN(amount)) {
+      setError('Please inter valid amount.');
     } else {
       setError('');
+      const body = {
+        name: to,
+        message: message,
+        amount: amount,
+        by: user.name,
+      };
+      let given = Number(user.given) + Number(amount);
+
+      setUser(prv => {
+        return {...prv, given};
+      });
+      setReward(prv => [...prv, body]);
+      setBottomClick(false);
     }
   };
   return (

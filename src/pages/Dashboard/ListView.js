@@ -51,6 +51,9 @@ const ListView = () => {
       </View>
       {activeTab === 'feed' ? (
         <FlatList
+          contentContainerStyle={{
+            paddingBottom: 80,
+          }}
           data={reward}
           ListEmptyComponent={EmptyComponent}
           renderItem={RenderItems}

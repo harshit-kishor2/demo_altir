@@ -16,7 +16,11 @@ const Dashboard = () => {
           borderTopLeftRadius: 20,
           borderTopRightRadius: 20,
         }}>
-        {bottomClick ? <AddForm /> : <ListView />}
+        {bottomClick ? (
+          <AddForm setBottomClick={setBottomClick} />
+        ) : (
+          <ListView />
+        )}
       </View>
       <View
         style={{
