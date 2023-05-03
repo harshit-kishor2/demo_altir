@@ -1,4 +1,4 @@
-import {Pressable, StyleSheet, Text, View} from 'react-native';
+import {Pressable, Text} from 'react-native';
 import React from 'react';
 
 const Tab = ({title, left, right, isActive, onPresss = () => {}}) => {
@@ -25,5 +25,3 @@ const Tab = ({title, left, right, isActive, onPresss = () => {}}) => {
 };
 
 export default Tab;
-
-const styles = StyleSheet.create({});

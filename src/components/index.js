@@ -1,3 +1,4 @@
 import Tab from './Tab';
 import FeedRow from './FeedRow';
-export {Tab, FeedRow};
+import RewardedRow from './RewardedRow';
+export {Tab, FeedRow, RewardedRow};

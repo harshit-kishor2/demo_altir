@@ -1,21 +1,22 @@
 import {Image, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
+import AssetConst from '../assets';
 
-const FeedRow = ({image, title, subTitle}) => {
+const RewardedRow = ({}) => {
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
-        <Image source={image} style={styles.image} />
+        <Image source={AssetConst.PROFILE_PIC} style={styles.image} />
       </View>
       <View style={styles.desc}>
-        <Text style={styles.titleText}>{title}</Text>
-        <Text style={styles.subtitleText}>{subTitle}</Text>
+        <Text style={styles.titleText}>$20</Text>
+        <Text style={styles.subtitleText}>Rewarded by - John Doe</Text>
       </View>
     </View>
   );
 };
 
-export default FeedRow;
+export default RewardedRow;
 
 const styles = StyleSheet.create({
   container: {

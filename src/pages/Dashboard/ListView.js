@@ -1,6 +1,6 @@
-import {FlatList, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {FlatList, StyleSheet, Text, View} from 'react-native';
 import React, {useContext, useState} from 'react';
-import {FeedRow, Tab} from '../../components';
+import {FeedRow, Tab, RewardedRow} from '../../components';
 import AssetConst from '../../assets';
 import {DataContext} from '../../context/DataContext';
 
@@ -9,12 +9,7 @@ const ListView = () => {
   const {reward} = useContext(DataContext);
   const EmptyComponent = () => {
     return (
-      <View
-        style={{
-          justifyContent: 'center',
-          alignItems: 'center',
-          paddingTop: 30,
-        }}>
+      <View style={styles.nodata}>
         <Text>No data found.</Text>
       </View>
     );
@@ -29,6 +24,10 @@ const ListView = () => {
       />
     );
   };
+  const RenderItems1 = ({item, index}) => {
+    return <RewardedRow />;
+  };
+
   return (
     <View style={{}}>
       <View
@@ -59,7 +58,14 @@ const ListView = () => {
           renderItem={RenderItems}
         />
       ) : (
-        <Text>Hello</Text>
+        <FlatList
+          contentContainerStyle={{
+            paddingBottom: 80,
+          }}
+          data={[1, 2]}
+          ListEmptyComponent={EmptyComponent}
+          renderItem={RenderItems1}
+        />
       )}
     </View>
   );
@@ -67,4 +73,10 @@ const ListView = () => {
 
 export default ListView;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  nodata: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: 30,
+  },
+});
